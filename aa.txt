@@ -1,0 +1,5 @@
+pwd (Print Working Directory) 查看当前目录
+cd (Change Directory) 切换目录，如 cd /etc
+ls (List) 查看当前目录下内容，如 ls -al
+mkdir (Make Directory) 创建目录，如 mkdir blog
+touch 创建文件，如 touch index.html

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //ajax五部曲
+    //创建ajax对象
+    var xhr = new XMLHttpRequest();
+    //设置参数 1.请求的方式 2.请求的地址 3.是否为异步请求
+    xhr.open("get","00ajax.php");
+    //设置回调函数
+    xhr.onreadystatechange = function(){
+        //判断状态
+        if(xhr.status==200&&xhr.readyState==4){
+            //接收数据
+            var res = xhr.responseText;
+            document.write(res);
+        }
+    }
+
+    //发送请求
+    xhr.send();
+</script>
+</html>

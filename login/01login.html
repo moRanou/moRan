@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        用户名 <input type="text" name="uName" id="">
+        密码 <input type="password" name="pwd" id="">
+        <input type="button" id="btn" value="提交">
+        
+    </form>
+</body>
+<script src="jquery-3.2.1.min.js">
+</script>
+<script> 
+        $("#btn").click(function(){
+
+            //将表单变成字符串格式
+            var dataStr = $("#form").serialize();
+
+            //发送ajax请求
+            $.ajax({
+                //请求方式
+                type:"post",
+                //请求路径
+                url:"01login.php",
+                //请求类型
+                dataType:"json",
+                //发送的数据
+                data:dataStr,
+                //返回的回调函数
+                success:function(data){
+                    //接收
+                    if(data.status==1){
+                        alert(data.msg);                    
+                    }else{
+                        alert(data.msg)
+                    }
+                }
+            })
+
+
+        })
+
+
+</script>
+</html>
