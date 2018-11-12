@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+
+// 箭头函数
+function foo() {
+    console.log('hello');
+}
+const foo = () => console.log('hello');
+
+// 数组去重
+const formatArray = arr => [... new Set(arr)];
+
+// 数组合并
+const newArr = [...arr1, ...arr2, 'value'];
+
+//对象浅拷贝
+let obj = {...obj1}
+
+/**
+ * 优雅的js判断
+ * 按钮点击事件
+ * @param {number} status 活动状态：1 开团进行中 2 开团失败 3 商品售罄 4 开团成功 5 系统取消
+ */
+ const onButtonClick = (status)=>{
+  if(status == 1){
+    sendLog('processing')
+  }else if(status == 2){
+    sendLog('fail')
+  }else if(status == 3){
+    sendLog('pedding')
+  }else if(status == 4){
+    sendLog('success')
+  }else if(status == 5){
+    sendLog('cancel')
+  }else {
+    sendLog('other')
+  }
+}
+
+// switch case 的写法
+const onButtonClick = (status) => {
+    switch (status){
+    case 1:
+      sendLog('processing')
+      break
+    case 2:
+      sendLog('pedding')
+      break  
+    case 3:
+      sendLog('fail')
+      break  
+    case 4:
+      sendLog('success')
+      break
+    case 5:
+      sendLog('cancel')
+      break
+    default:
+      sendLog('other')
+      break
+  }
+}
+
+
+// 再次升级， 对象属性值
+const actions = {
+    '1': 'processing',
+    '2': 'pedding',
+    '3': 'fail',
+    '4': 'success',
+    '5': 'cancel',
+    'default': 'other'
+}
+const onButtonClick = (status) => {
+    let action = actions[status] || actions['default'];
+    sendLog(action)
+}
+
+// 以及new Map的方法
+const actions = new Map([
+    [1, 'processing'],
+    [2, 'pedding'],
+    [3, 'fail'],
+    [4, 'success'],
+    [5, 'cancel'],
+    ['default', 'other'],
+])
+const onButtonClick = (status) => {
+    let action = actions.get(status) || actions.get('default');
+    sendLog(action)
+}
+
+</script>
+</html>
