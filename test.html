@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //因为是多个商品，先算出单个商品的贷款价格，最后再相加
+
+    let group = [
+        {
+            orderid: 20,
+            goods: [
+                {
+                    name: '苹果',
+                    price: 100,
+                    count: 10,
+                },
+                {
+                    name: '香蕉',
+                    price: 100,
+                    count: 10,
+                },
+            ]
+        },
+        {
+            orderid: 21,
+            goods: [
+                {
+                    name: '葡萄',
+                    price: 100,
+                    count: 10,
+                },
+                {
+                    name: '周黑鸭',
+                    price: 200,
+                    count: 10,
+                },
+            ]
+
+        }
+    ]
+    group.map(e => {
+        e.totalRichPrice = 0;
+        e.goods.map(e2 => {
+            e2.itemRichPrice = e2.price * e2.count
+            e.totalRichPrice += e2.itemRichPrice
+        })
+    })
+    // console.log(group)
+    // itemRichPrice 为每项的贷款金额
+    // totalRichPrice 为每个订单的贷款金额，也就是所求得的
+    function gradeScore(score) {
+        const table = {
+            90: "A",
+            80: "B",
+            70: "C",
+            'default': "D",
+        }
+        return table[(Math.floor(score / 10)) * 10] || table['default']
+    }
+    console.log(
+    gradeScore(78)
+    )
+</script>
+
+</html>
