@@ -19,7 +19,6 @@
     console.log('hello');
   }
   const foo = () => console.log('hello');
-
   // 数组去重
   const formatArray = arr => [... new Set(arr)];
 
@@ -170,6 +169,14 @@
 
   // 大于0的正整数
   let reg = /^\+?[1-9]\d*$/;
+  // 手机号码
+  let reg = /^1[3456789]\d{9}$/;
+  // 地址
+  let reg = /^[\u4e00-\u9fa5_a-zA-Z0-9 ]+$/;
+  // 用户名
+  let reg = /^([\u4e00-\u9fa5_a-zA-Z]){2,7}$/;
+
+
 
   /**
     表驱动编程, 其实通俗来说就是利用obj[属性名] = 属性值
@@ -244,6 +251,23 @@
     return item.id === 1
   }, result)
   console.log(result)
+
+  // // 实现一个闭包函数，每次调用都自增1
+  // let add = (function () {
+  //   let count = 0;
+  //   return function () {
+  //     return console.log(count++)
+  //   }
+  // })();
+  // setInterval(() => {
+  //     add()
+  // }, 1000);
+
+  // 关于["1", "2", "3"].map(parsetInt) 的结果
+  ['1', '2', '3'].map(parseInt);
+  console.log( "res-------" + 1, NaN, NaN )
+
+
 </script>
 
 </html>
