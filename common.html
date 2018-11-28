@@ -265,9 +265,21 @@
 
   // 关于["1", "2", "3"].map(parsetInt) 的结果
   ['1', '2', '3'].map(parseInt);
-  console.log( "res-------" + 1, NaN, NaN )
+  console.log("res-------" + 1, NaN, NaN)
 
-
+  // 数组对象去重, 并计算得出重复的次数
+  let count = 0;
+  function unique(arr, u_key) {
+    let map = new Map()
+    arr.forEach((item, index) => {
+      if (!map.has(item[u_key])) {
+        count ++;
+        map.set(item[u_key], item)
+      }
+    })
+    return [...map.values()]
+  }
+  // 重复的个数则为: arr.length - count 
 </script>
 
 </html>
