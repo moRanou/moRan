@@ -12,21 +12,20 @@
 
 </body>
 <script>
-
-
   // 箭头函数
   function foo() {
     console.log('hello');
   }
   const foo = () => console.log('hello');
   // 数组去重
-  const formatArray = arr => [... new Set(arr)];
+  const formatArray = arr => [...new Set(arr)];
 
   // 数组合并
   const newArr = [...arr1, ...arr2, 'value'];
 
   //对象浅拷贝
-  let obj = { ...obj1 }
+  let obj = { ...obj1
+  }
 
   /**
    * 优雅的js判断
@@ -165,7 +164,7 @@
    * 
    * 正则验证
    * 
-  */
+   */
 
   // 大于0的正整数
   let reg = /^\+?[1-9]\d*$/;
@@ -203,9 +202,18 @@
   // 优化后
   function getMonthDays(year, month) {
     const table = {
-      1: 31, 3: 31, 5: 31, 7: 31, 8: 31, 10: 31, 12: 31,
+      1: 31,
+      3: 31,
+      5: 31,
+      7: 31,
+      8: 31,
+      10: 31,
+      12: 31,
       2: isLeapYear(year) ? 29 : 28,
-      4: 30, 6: 30, 9: 30, 11: 30,
+      4: 30,
+      6: 30,
+      9: 30,
+      11: 30,
     }
     return table[month]
   }
@@ -269,17 +277,26 @@
 
   // 数组对象去重, 并计算得出重复的次数
   let count = 0;
-  function unique(arr, u_key) {
+
+  function unique(arr, key) {
     let map = new Map()
     arr.forEach((item, index) => {
-      if (!map.has(item[u_key])) {
-        count ++;
-        map.set(item[u_key], item)
+      if (!map.has(item[key])) {
+        count++;
+        map.set(item[key], item)
       }
     })
     return [...map.values()]
   }
-  // 重复的个数则为: arr.length - count 
+  // 重复的个数则为: arr.length - count
+
+  // 关于字符串的正则替换匹配
+  var str = '[憋嘴]哈哈，你看这个人[微笑]';
+  var path = '../lib/img/qq/';
+  var file = '.gif';
+  str.replace(/\[(.+?)\]/g, function (res) {
+    return '<img src="' + path + res.replace(/\[|\]/g, '') + file + '">'
+  })
 </script>
 
 </html>
