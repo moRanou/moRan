@@ -12,22 +12,24 @@
 
 </body>
 <script>
-  // 箭头函数
+  //1. 箭头函数
   function foo() {
     console.log('hello');
   }
   const foo = () => console.log('hello');
-  // 数组去重
+
+  //2. 数组去重
   const formatArray = arr => [...new Set(arr)];
 
-  // 数组合并
+  //3. 数组合并
   const newArr = [...arr1, ...arr2, 'value'];
 
-  //对象浅拷贝
-  let obj = { ...obj1
+  //4.对象浅拷贝
+  let obj = {
+    ...obj1
   }
 
-  /**
+  /**5.
    * 优雅的js判断
    * 按钮点击事件
    * @param {number} status 活动状态：1 开团进行中 2 开团失败 3 商品售罄 4 开团成功 5 系统取消
@@ -47,7 +49,6 @@
       sendLog('other')
     }
   }
-
   // switch case 的写法
   const onButtonClick = (status) => {
     switch (status) {
@@ -71,8 +72,6 @@
         break
     }
   }
-
-
   // 再次升级， 对象属性值
   const actions = {
     '1': 'processing',
@@ -86,10 +85,6 @@
     let action = actions[status] || actions['default'];
     sendLog(action)
   }
-
-
-
-
   // 以及new Map的方法
   const actions = new Map([
     [1, 'processing'],
@@ -104,8 +99,7 @@
     sendLog(action)
   }
 
-
-  // 时间戳转换为最近时间
+  //6. 时间戳转换为最近时间
   function dateDiff(timestamp) {
     let arrTimestamp = (timestamp + '').split('');
     for (let start = 0; start < 13; start++) {
@@ -121,7 +115,6 @@
     let month = day * 30;
     let now = new Date().getTime();
     let diffValue = now - timestamp;
-
     // 如果本地时间反而小于变量时间
     if (diffValue < 0) {
       return '不久前';
@@ -131,7 +124,6 @@
     let dayC = diffValue / day;
     let hourC = diffValue / hour;
     let minC = diffValue / minute;
-
     // 数值补0方法
     let zero = function (value) {
       if (value < 10) {
@@ -139,7 +131,6 @@
       }
       return value;
     };
-
     if (monthC > 12) {
       // 超过1年，直接显示年月日
       return (function () {
@@ -161,28 +152,19 @@
   }
 
   /**
-   * 
-   * 正则验证
-   * 
+   7.正则验证
    */
-
-  // 大于0的正整数
-  let reg = /^\+?[1-9]\d*$/;
-  // 手机号码
-  let reg = /^1[3456789]\d{9}$/;
-  // 地址
-  let reg = /^[\u4e00-\u9fa5_a-zA-Z0-9 ]+$/;
-  // 用户名
-  let reg = /^([\u4e00-\u9fa5_a-zA-Z]){2,7}$/;
+  let reg = /^\+?[1-9]\d*$/; // 大于0的正整数
+  let reg = /^1[3456789]\d{9}$/; // 手机号码
+  let reg = /^[\u4e00-\u9fa5_a-zA-Z0-9 ]+$/; // 地址
+  let reg = /^([\u4e00-\u9fa5_a-zA-Z]){2,7}$/; // 用户名
 
 
 
   /**
-    表驱动编程, 其实通俗来说就是利用obj[属性名] = 属性值
+    8.表驱动编程, 其实通俗来说就是利用obj[属性名] = 属性值
   */
-
   // 优化前
-
   function getMonthDays(year, month) {
     if (month === 1 ||
       month === 3 ||
@@ -198,7 +180,6 @@
       return 30
     }
   }
-
   // 优化后
   function getMonthDays(year, month) {
     const table = {
@@ -217,7 +198,6 @@
     }
     return table[month]
   }
-
   // 优化前
   function gradeScore(score) {
     if (score >= 90) {
@@ -230,7 +210,6 @@
       return 'E'
     }
   }
-
   // 优化后
   function gradeScore(score) {
     const table = {
@@ -242,7 +221,7 @@
     return table[(Math.floor(score / 10)) * 10] || table['default']
   }
 
-  // 递归数据
+  //9. 递归数据
   function find(arr, fn, result) {
     arr.forEach(item => {
       if (item.children) {
@@ -260,22 +239,22 @@
   }, result)
   console.log(result)
 
-  // // 实现一个闭包函数，每次调用都自增1
-  // let add = (function () {
-  //   let count = 0;
-  //   return function () {
-  //     return console.log(count++)
-  //   }
-  // })();
-  // setInterval(() => {
-  //     add()
-  // }, 1000);
+  //10. 实现一个闭包函数，每次调用都自增1
+  let add = (function () {
+    let count = 0;
+    return function () {
+      return console.log(count++)
+    }
+  })();
+  setInterval(() => {
+    add()
+  }, 1000);
 
-  // 关于["1", "2", "3"].map(parsetInt) 的结果
+  //11. 关于["1", "2", "3"].map(parsetInt) 的结果
   ['1', '2', '3'].map(parseInt);
   console.log("res-------" + 1, NaN, NaN)
 
-  // 数组对象去重, 并计算得出重复的次数
+  //12. 数组对象去重, 并计算得出重复的次数
   let count = 0;
 
   function unique(arr, key) {
@@ -290,13 +269,162 @@
   }
   // 重复的个数则为: arr.length - count
 
-  // 关于字符串的正则替换匹配
+  //13. 关于字符串的正则替换匹配
   var str = '[憋嘴]哈哈，你看这个人[微笑]';
   var path = '../lib/img/qq/';
   var file = '.gif';
   str.replace(/\[(.+?)\]/g, function (res) {
     return '<img src="' + path + res.replace(/\[|\]/g, '') + file + '">'
   })
+
+  /**
+    14. 获取当天凌晨的00:00;
+  */
+  let sameDay = new Date(new Date().setHours(0, 0, 0, 0)) / 1000;
+  let dayLater = sameDay + (86400 * day); // day天后的00:00;
+  let dayafter = sameDay - (86400 * day); // day天前的00:00;
+
+  /**
+    15. 返回数组中有相同项的
+  */
+  let arr = [1, 2, 3, 4, 5, 6, 7].filter(item => [2, 3, 5, 6, 8].indexOf(item) > -1);
+
+  /**
+   * 16. 关于eventLoop的理解
+   *  https://www.cnblogs.com/cangqinglang/p/8967268.html
+   */
+  // 注意宏任务跟微任务
+  // 1. 宏任务的有
+  setInterval, setTimeout,
+  // 2. 微任务的有
+  new Promise(), new MutationObserver();
+  // 当前执行栈执行完毕时会立刻先处理所有微任务队列中的事件，然后再去宏任务队列中取出事件
+  // 同一次事件循环中，微任务永远在宏任务之前执行
+
+
+  /**
+   * 17. 关于将平级数据转变为层级数据结构的方案 
+   */
+  // 方案一 
+  function tree(data) {
+    let obj = {};
+    let val = [];
+    data.forEach(e => {
+      obj[e.id] = e; //为每个节点的id
+    })
+    data.forEach(e => {
+      if (obj[e.pId]) { // 为每个节点的父节点(pId)
+        if (!obj[e.pId].children) {
+          obj[e.pId].children = [];
+        }
+        obj[e.pId].children.push(e);
+      } else {
+        val.push(e)
+      }
+    });
+    return val;
+  };
+
+  /**
+   *  18. 关于发布订阅模式，类似于eventbus
+   */
+  function isFunc(fn) {
+    return typeof fn === "function"
+  }
+
+  function str(s) {
+    if (s == null) {
+      return null;
+    }
+    s = s.replace(/^\s+|\s+$/g, "");
+    return s.length > 0 ? s.toLowerCase() : null;
+  }
+
+  function handler() {
+    var fns = [];
+    var datas = [];
+    this.add = function (fn, data) {
+      fns.push(fn);
+      datas.push(data);
+    }
+    this.remove = function (fn) {
+      var i = fns.indexOf(fn);
+      if (i >= 0) {
+        fns.splice(i, 1);
+        datas.splice(i, 1);
+      }
+    }
+    this.invoke = function (sender, data) {
+      fns.forEach((fn, i) => {
+        try {
+          fn(sender, data, datas[i])
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    }
+  }
+
+  function eventBus() {
+    var handers = {}
+    this.on = function (eventName, fnOrData, fn) {
+      eventName = str(eventName);
+      if (eventName == null) {
+        throw new Error("事件名无效");
+      }
+      if (!isFunc(fn)) {
+        var temp = fn;
+        fn = fnOrData;
+        fnOrData = temp;
+      }
+      if (!isFunc(fn)) {
+        throw new Error("必须提供事件函数");
+      }
+      var handle = handers[eventName];
+      if (handle == null) {
+        handle = new handler();
+        handers[eventName] = handle;
+      }
+      handle.add(fn, fnOrData);
+    }
+    this.off = function (eventName, fn) {
+      eventName = str(eventName);
+      if (eventName == null) {
+        return;
+      }
+      var handle = handers[eventName];
+      if (handle != null) {
+        if (fn == null) {
+          delete handers[eventName];
+        } else {
+          handle.remove(fn);
+        }
+      }
+    }
+    this.fire = this.emit = this.trigger =
+      function (eventName, sender, data) {
+        eventName = str(eventName);
+        if (eventName == null) {
+          return;
+        }
+        var handle = handers[eventName];
+        if (handle != null) {
+          handle.invoke(sender, data);
+        }
+      }
+    var bus = this;
+    this.bindTo = function (obj) {
+      if (obj == null) {
+        throw new Error("obj is null");
+      }
+      for (const key in bus) {
+        if (bus.hasOwnProperty(key) && key !== "bindTo") {
+          obj[key] = bus[key];
+        }
+      }
+    }
+  }
+  var instance = new eventBus();
 </script>
 
 </html>
