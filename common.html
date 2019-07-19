@@ -283,7 +283,7 @@
   let sameDay = new Date(new Date().setHours(0, 0, 0, 0)) / 1000;
   let dayLater = sameDay + (86400 * day); // day天后的00:00;
   let dayafter = sameDay - (86400 * day); // day天前的00:00;
-
+  1563379200 - (86400 * 2)
   /**
     15. 返回数组中有相同项的
   */
@@ -310,10 +310,10 @@
     let obj = {};
     let val = [];
     data.forEach(e => {
-      obj[e.id] = e; //为每个节点的id
+      obj[e.id] = e; 
     })
     data.forEach(e => {
-      if (obj[e.pId]) { // 为每个节点的父节点(pId)
+      if (obj[e.pId]) { // 为每个节点的父节点(pId), 为每个节点的id, 如果进来这里，说明当前e归属于父节点下面
         if (!obj[e.pId].children) {
           obj[e.pId].children = [];
         }
@@ -322,7 +322,7 @@
         val.push(e)
       }
     });
-    return val;
+    return val; // 之所以res也有了，是因为改变了obj的项，而obj则是引用了arr，致使arr也改变了，刚好res又是拿的arr的数据，所以res也改变了，引用地址的关系
   };
 
   /**
