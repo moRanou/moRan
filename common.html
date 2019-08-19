@@ -425,6 +425,17 @@
     }
   }
   var instance = new eventBus();
+  
+  /**
+   *  18. 生成范围内的随机数 
+  */
+   function getRandomNumber(max,min) {
+        for(let i = 0; i<10; i++) {
+           let x = Math.floor(Math.random() * (max - min + 1)) + min;
+           console.log(x);
+        }
+       }
+    getRandomNumber(0,56);
 </script>
 
 </html>
